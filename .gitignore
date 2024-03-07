@@ -1,0 +1,11 @@
+/venv/
+/__pycache__/
+/backups/
+/imfcfg/venv/
+*.pyc
+*.cmp
+*.cfg
+*.conf
+ply_*
+*.cache*
+parser.out

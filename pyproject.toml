@@ -1,0 +1,23 @@
+[project]
+name = "imfcfg"
+version = "0.9.1"
+requires-python = ">=3.8"
+
+dependencies = [
+  "flask",
+  "pynetbox",
+  "Jinja2",
+  "PyYAML",
+  "passlib",
+  "cachedpynetbox@git+https://github.com/lub-dub/cachedpynetbox.git"
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[project.entry-points.'flask.commands']
+updater = "imfcfg.cli.main:updater"

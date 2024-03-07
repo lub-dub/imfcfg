@@ -1,0 +1,9 @@
+[global]
+base_uri = https://localhost/api/
+#token =  
+
+[templates]
+path = ~/templates
+
+[db]
+path = ~/event-db
