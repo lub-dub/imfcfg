@@ -3,6 +3,7 @@ from imfcfg.c3cfg import loadVars, loadKeys
 import os
 import yaml
 import json
+from copy import deepcopy
 from imfcfg.nbh import *
 from imfcfg.loader import *
 from imfcfg.routing import *
@@ -103,7 +104,7 @@ def create_app(nb=None):
 
     @app.route("/<device>")
     def render_hostname(device):
-        tvars = current_app.config.tvars
+        tvars = deepcopy(current_app.config.tvars)
         try:
             typ, data, path, checkmodif = current_app.config.loader.get_source_type(
                 current_app.config.templateEnv, device
