@@ -19,6 +19,8 @@ while true; do
 	fi
 	conf_host=$(sed -n -E 's/ *host-name +(SW.*);/\1/p' $run/imfcfg.conf.new)
 	if [ "$sys_host" != "$conf_host" ]; then
+		echo "[$(date)] Host mismatch $sys_host $conf_host" \
+		     >> $run/imfcfg-autoreload.log
 		sleep $rand
 		continue
 	fi
@@ -38,3 +40,5 @@ done
  echo "configure"
  echo "commit check and-quit"
 } | /usr/sbin/cli
+
+date > $run/imfcfg-autoreload-last-change
