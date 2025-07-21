@@ -1,1 +1,1 @@
-*/15 * * * * /bin/sh /var/tmp/autoreload.sh
+*/1 * * * * /bin/sh /var/tmp/autoreload.sh
