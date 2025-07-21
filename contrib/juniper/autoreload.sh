@@ -3,7 +3,7 @@
 sys_host=$(hostname)
 config_url=http://deploy.c3noc.net/"$sys_host"
 ping_target="203.0.113.1"
-rand="$(dd if=/dev/urandom bs=1 count=64 | base64 | grep -zo "[0-9]" | tail -n 2 | /bin/sh -c 'while read N ; do echo -n "$N" ; done')"
+rand=${rand:-"$(dd 2>/dev/null if=/dev/urandom bs=1 count=64 | base64 | grep -zo "[0-9]" | sed -E 's/(..).*/\1/' | sed 1q)"} # 0-99 weird distribution
 
 sleep $rand
 
