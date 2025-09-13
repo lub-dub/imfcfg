@@ -1,0 +1,12 @@
+[Unit]
+Description=c3cfg service
+
+[Service]
+User=c3cfg
+Group=c3cfg
+Type=simple
+StandardOutput=journal
+ExecStart=/srv/c3cfg/script/run_server
+
+[Install]
+WantedBy=default.target

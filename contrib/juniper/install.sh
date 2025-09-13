@@ -10,7 +10,10 @@ ping -c1 -w1 $1 || {
 
 password="$(jq -r .admin_password < ../db/event-config.json)"
 
-scp -O -o 'BatchMode yes' -o 'StrictHostKeyChecking no' autoreload.* $1:/var/tmp/
+scp -O -o 'BatchMode yes' -o 'StrictHostKeyChecking no' autoreload.* $1:/var/tmp/ || {
+    echo "could not copy files to $1" >> error.log
+    exit 2
+}
 
 expect <<EOD
 spawn ssh -oStrictHostKeyChecking=no $1
